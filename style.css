@@ -1,0 +1,171 @@
+/* El Consejo Friki: comeback. Colores del tema "Vista Black" (2009) */
+:root {
+  --bg: #111;
+  --panel: #080808;
+  --gold: #fc3;
+  --orange: #f50;
+  --red: #e3001b;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #ddd;
+  font: 16px/1.6 Verdana, Arial, Helvetica, sans-serif;
+}
+
+a { color: var(--gold); }
+a:hover { color: var(--orange); }
+
+/* ---- Hero ---- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 40px 16px 80px;
+}
+.hero-bg {
+  position: absolute; inset: -20px;
+  background: url(img/top_header.jpg) center / cover no-repeat;
+  filter: blur(18px) brightness(.35) saturate(1.4);
+  transform: scale(1.1);
+}
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,.85) 75%),
+              repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 2px, transparent 2px 4px);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; width: 100%; max-width: 1100px; }
+
+.logo {
+  display: block; width: 100%;
+  height: clamp(110px, 14vw, 150px);
+  object-fit: cover; object-position: center;
+  border-top: 1px solid #444; border-bottom: 1px solid #444;
+  box-shadow: 0 0 60px rgba(227, 0, 27, .45), 0 0 0 1px #000;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { box-shadow: 0 0 30px rgba(227, 0, 27, .3), 0 0 0 1px #000; }
+  to   { box-shadow: 0 0 80px rgba(227, 0, 27, .6), 0 0 0 1px #000; }
+}
+
+.kicker { color: var(--gold); letter-spacing: .5em; font-size: 13px; margin: 0 0 18px; }
+
+.hero h1 {
+  margin: 28px 0 8px;
+  font-size: clamp(48px, 13vw, 140px);
+  line-height: 1;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  text-shadow: 0 0 20px var(--red), 0 0 50px var(--red), 4px 4px 0 #000;
+}
+.cursor { color: var(--orange); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.motto { color: #bbb; font-style: italic; font-size: clamp(13px, 2.5vw, 17px); margin: 0 0 26px; }
+
+.soon {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 26px;
+  border: 2px solid var(--orange);
+  color: var(--gold);
+  font-weight: bold; text-transform: uppercase; letter-spacing: .15em; font-size: 13px;
+  background: rgba(0, 0, 0, .6);
+  box-shadow: 0 0 18px rgba(255, 85, 0, .4);
+}
+
+.scroll {
+  position: absolute; z-index: 1; bottom: 24px; left: 50%; transform: translateX(-50%);
+  color: var(--gold); text-decoration: none; font-size: 22px;
+  animation: bob 1.6s ease-in-out infinite;
+}
+@keyframes bob { 50% { transform: translate(-50%, 8px); } }
+
+/* ---- Secciones ---- */
+.section { padding: 70px 16px; }
+.inner { max-width: 1100px; margin: 0 auto; }
+.narrow { max-width: 720px; }
+.center { text-align: center; }
+
+h2 {
+  margin: 0 0 20px;
+  color: var(--gold);
+  font-size: clamp(24px, 4vw, 34px);
+  text-transform: uppercase; letter-spacing: .04em;
+}
+h2::after {
+  content: ""; display: block; width: 60px; height: 3px; margin-top: 10px;
+  background: var(--orange);
+}
+.center h2::after, h2.center::after { margin-left: auto; margin-right: auto; }
+
+#mensaje p { font-size: 17px; }
+.sign { color: #999; margin-top: 24px; }
+
+/* Bandas con el degradado de las cabeceras del tema */
+.band {
+  background: linear-gradient(#1d1d21, #0b0b0d);
+  border-top: 1px solid #333; border-bottom: 1px solid #000;
+}
+
+/* ---- Números ---- */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;
+}
+.stats b {
+  display: block;
+  font-size: clamp(32px, 6vw, 56px); line-height: 1.1;
+  color: #fff; text-shadow: 0 0 16px var(--red);
+}
+.stats span { color: var(--gold); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+@media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---- Tarjetas ---- */
+.cards {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;
+}
+.cards article {
+  background: var(--panel);
+  border: 1px solid #333; border-top: 3px solid var(--orange);
+  padding: 18px;
+  transition: transform .2s, border-color .2s;
+}
+.cards article:hover { transform: translateY(-4px); border-color: #555; border-top-color: var(--gold); }
+.cards span { color: var(--orange); font-size: 12px; font-weight: bold; text-transform: uppercase; }
+.cards h3 { margin: 4px 0 6px; color: #fff; font-size: 17px; }
+.cards p { margin: 0; color: #aaa; font-size: 14px; }
+
+/* ---- Etiquetas ---- */
+.tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0; }
+.tags span {
+  padding: 6px 14px; border: 1px solid #444; background: #000;
+  color: var(--gold); font-size: 13px; font-weight: bold;
+}
+
+/* ---- Cierre ---- */
+.final {
+  background: radial-gradient(ellipse at center, #3a0a10 0%, var(--bg) 70%);
+  padding: 100px 16px;
+}
+.final h2 { font-size: clamp(32px, 7vw, 60px); color: #fff; text-shadow: 0 0 20px var(--red); }
+.final p { font-size: 18px; }
+
+footer {
+  text-align: center; font-size: 12px; color: #777;
+  padding: 24px 16px 40px; border-top: 1px solid #222;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
